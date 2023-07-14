@@ -28,10 +28,13 @@ def extract_title_from_new_article():
             return title
 
 
+
 def transfer_content_from_new_article_to_database():
     with open("new_article.md", 'r') as file:
         # Read all lines starting from the second line
         lines = file.readlines()[1:]
+    
+
 
     with open(filepath, 'w') as database_file:
         database_file.writelines(lines)
@@ -88,9 +91,9 @@ add_code_to_html('./index.html',
         </div>
         
 """)
-import subprocess
+# import subprocess
 
-# Perform git commands
-subprocess.run(['git', 'add', '*'])
-subprocess.run(['git', 'commit', '-m', 'update'])
-subprocess.run(['git', 'push'])
+# # Perform git commands
+# subprocess.run(['git', 'add', '*'])
+# subprocess.run(['git', 'commit', '-m', 'update'])
+# subprocess.run(['git', 'push'])
