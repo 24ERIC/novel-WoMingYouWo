@@ -5,7 +5,7 @@ def create_new_folder_file_in_database(title):
     global filepath
     
     folder_name = datetime.now().strftime("%Y_%-m_%-d_%-H-%-M-%-S")
-    folder_path = f"./database/{folder_name}"
+    folder_path = f"./docs/{folder_name}"
 
     # Create the folder if it doesn't exist
     os.makedirs(folder_path, exist_ok=True)
@@ -75,7 +75,7 @@ create_new_folder_file_in_database(title)
 transfer_content_from_new_article_to_database()
 
 
-add_code_to_html('./Eric-World.html',
+add_code_to_html('./index.html',
 """
         <div class="posts-line">
           <div class="posts-title">
@@ -88,9 +88,9 @@ add_code_to_html('./Eric-World.html',
         </div>
         
 """)
-# import subprocess
+import subprocess
 
-# # Perform git commands
-# subprocess.run(['git', 'add', '*'])
-# subprocess.run(['git', 'commit', '-m', 'update'])
-# subprocess.run(['git', 'push'])
+# Perform git commands
+subprocess.run(['git', 'add', '*'])
+subprocess.run(['git', 'commit', '-m', 'update'])
+subprocess.run(['git', 'push'])
