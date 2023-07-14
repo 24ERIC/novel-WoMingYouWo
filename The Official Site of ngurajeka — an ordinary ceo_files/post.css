@@ -1,0 +1,29 @@
+.content {
+	margin-top: 0;
+}
+
+.posts {
+	max-width: 800px;
+	padding: 20px;
+	width: 100%;
+}
+
+.posts .posts-year {
+	font-size: 1.625rem;
+	margin-bottom: 0;
+	text-align: left;
+}
+
+.posts .posts-line {
+	text-align: left;
+}
+
+.posts-date,
+.posts-title {
+	display: inline-block;
+}
+
+.posts-date {
+	opacity: .8;
+	margin-right: 16px;
+}
