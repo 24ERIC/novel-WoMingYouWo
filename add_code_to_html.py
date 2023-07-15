@@ -1,5 +1,7 @@
 from datetime import datetime
 import os
+import subprocess
+
 
 def create_new_folder_file_in_database(title):
     global filepath
@@ -17,6 +19,24 @@ def create_new_folder_file_in_database(title):
     # Create the new file
     with open(filepath, 'w') as file:
         file.write("")
+    
+    content = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <!-- Import element definition -->
+        <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
+    </head>
+    <body>
+        <!-- Profit! -->
+        <zero-md src=" """ + f"./{formatted_time}-{title}.md" + """ "></zero-md>
+    </body>
+    </html>
+    """
+
+    with open(f"{folder_path}/{formatted_time}-{title}.html", 'w') as file:
+        file.write(content)
+
 
 
 def extract_title_from_new_article():
@@ -91,9 +111,9 @@ add_code_to_html('./index.html',
         </div>
         
 """)
-# import subprocess
 
-# # Perform git commands
-# subprocess.run(['git', 'add', '*'])
-# subprocess.run(['git', 'commit', '-m', 'update'])
-# subprocess.run(['git', 'push'])
+
+
+subprocess.run(['git', 'add', '*'])
+subprocess.run(['git', 'commit', '-m', 'update-new-post'])
+subprocess.run(['git', 'push'])
