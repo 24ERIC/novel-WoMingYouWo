@@ -108,8 +108,7 @@ add_code_to_html('./index.html',
             <time class="posts-date" datetime="">
           """ + "    " + datetime.now().strftime("%Y-%m-%d") + """
             </time>
-            <a href=" """ + htmlpath + """
-            ">""" + title + """</a>
+            <a href=\"""" + htmlpath + """\">""" + title + """</a>
           </div>
         </div>
         
