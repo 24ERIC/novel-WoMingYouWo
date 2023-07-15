@@ -5,6 +5,7 @@ import subprocess
 
 def create_new_folder_file_in_database(title):
     global filepath
+    global htmlpath
     
     folder_name = datetime.now().strftime("%Y_%-m_%-d_%-H-%-M-%-S")
     folder_path = f"./docs/{folder_name}"
@@ -15,6 +16,8 @@ def create_new_folder_file_in_database(title):
     # get file name
     formatted_time = datetime.now().strftime("%Y_%-m_%-d_%-H-%-M-%-S")
     filepath = f"{folder_path}/{formatted_time}-{title}.md"
+    htmlpath = f"{folder_path}/{formatted_time}-{title}.html"
+    
 
     # Create the new file
     with open(filepath, 'w') as file:
@@ -105,7 +108,7 @@ add_code_to_html('./index.html',
             <time class="posts-date" datetime="">
           """ + "    " + datetime.now().strftime("%Y-%m-%d") + """
             </time>
-            <a href=" """ + filepath + """
+            <a href=" """ + htmlpath + """
             ">""" + title + """</a>
           </div>
         </div>
