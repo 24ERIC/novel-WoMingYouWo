@@ -1,4 +1,5 @@
-* title: CSC263 Data Structures and Analysis - Graph
+# CSC263 Data Structures and Analysis - Graph
+
 - G=(V,E)
     - V -> Set of vertices -> node
     - E -> Set of edges -> line
