@@ -67,7 +67,7 @@ def transfer_content_from_new_article_to_database():
 
 def reset_new_article():
     with open("new_article.md", 'w') as file:
-        file.write("title: ")
+        file.write("title: \n")
         file.write("# title: ")
 
 
