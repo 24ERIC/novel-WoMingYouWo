@@ -108,7 +108,7 @@ def count_characters():
 def modify_html_number():
     number_to_add = count_characters()
 
-    with open(htmlpath, 'r', encoding='utf-8') as file:
+    with open("index.html", 'r', encoding='utf-8') as file:
         content = file.read()
 
         # Parse the HTML content
@@ -127,7 +127,7 @@ def modify_html_number():
         span_element.string = str(new_number)
 
     # Write the modified HTML back to the file
-    with open(htmlpath, 'w', encoding='utf-8') as file:
+    with open("index.html", 'w', encoding='utf-8') as file:
         file.write(str(soup))
 
 
