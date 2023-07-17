@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import subprocess
+from bs4 import BeautifulSoup
 
 
 def create_new_folder_file_in_database(title):
@@ -94,29 +95,69 @@ def add_code_to_html(html_file_path, code):
         else:
             print('Error: Comment not found in the HTML file.')
 
+def count_characters():
+    with open(filepath, 'r', encoding='utf-8') as file:
+        content = file.read()
 
-title = extract_title_from_new_article()
+        # Count the characters
+        character_count = len(content)
 
-create_new_folder_file_in_database(title)
-
-transfer_content_from_new_article_to_database()
+    return character_count
 
 
-add_code_to_html('./index.html',
-"""
-        <div class="posts-line">
-          <div class="posts-title">
-            <time class="posts-date" datetime="">
-          """ + "    " + datetime.now().strftime("%Y-%m-%d") + """
-            </time>
-            <a href=\"""" + htmlpath + """\">""" + title + """</a>
-          </div>
-        </div>
-        
-""")
+def modify_html_number():
+    number_to_add = count_characters()
 
-    
+    with open(htmlpath, 'r', encoding='utf-8') as file:
+        content = file.read()
 
-subprocess.run(['git', 'add', '*'])
-subprocess.run(['git', 'commit', '-m', 'update-new-post'])
-subprocess.run(['git', 'push'])
+        # Parse the HTML content
+        soup = BeautifulSoup(content, 'html.parser')
+
+        # Find the span element with the id "number_of_char"
+        span_element = soup.find('span', id='number_of_char')
+
+        # Get the current number
+        current_number = int(span_element.string)
+
+        # Calculate the new number
+        new_number = current_number + number_to_add
+
+        # Update the number
+        span_element.string = str(new_number)
+
+    # Write the modified HTML back to the file
+    with open(htmlpath, 'w', encoding='utf-8') as file:
+        file.write(str(soup))
+
+
+
+
+
+if __name__ == '__main__':
+    # get file title
+    title = extract_title_from_new_article()
+
+    # create new page
+    create_new_folder_file_in_database(title)
+
+    # move content
+    transfer_content_from_new_article_to_database()
+
+    # modify html
+    add_code_to_html('./index.html',
+    """
+            <div class="posts-line">
+            <div class="posts-title">
+                <time class="posts-date" datetime="">
+            """ + "    " + datetime.now().strftime("%Y-%m-%d") + """
+                </time>
+                <a href=\"""" + htmlpath + """\">""" + title + """</a>
+            </div>
+            </div>
+            
+    """)
+
+    subprocess.run(['git', 'add', '*'])
+    subprocess.run(['git', 'commit', '-m', 'update-new-post'])
+    subprocess.run(['git', 'push'])
