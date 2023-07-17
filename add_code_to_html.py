@@ -115,7 +115,7 @@ add_code_to_html('./index.html',
         
 """)
 
-
+    
 
 subprocess.run(['git', 'add', '*'])
 subprocess.run(['git', 'commit', '-m', 'update-new-post'])
