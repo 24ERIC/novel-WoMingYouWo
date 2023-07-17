@@ -157,6 +157,8 @@ if __name__ == '__main__':
             </div>
             
     """)
+    
+    modify_html_number()
 
     subprocess.run(['git', 'add', '*'])
     subprocess.run(['git', 'commit', '-m', 'update-new-post'])
