@@ -1,5 +1,16 @@
 git add * && git commit -m "update" && git push
 ---------------------------------------
+for ((i=7; i<=100; i++)); do
+    filename="$i.md"
+    echo "title: 第$(printf "%05d" "$i")章" > "$filename"
+    echo "# 第$(printf "%05d" "$i")章" >> "$filename"
+    echo "-------------------------------------------------" >> "$filename"
+    echo "- 本章内容" >> "$filename"
+    echo "    - " >> "$filename"
+    echo "    - " >> "$filename"
+    echo "-------------------------------------------------" >> "$filename"
+done
+---------------------------------------
 - 人生目的
     - 游戏人生 + 高调 -> 找bug 
 - 长期计划
