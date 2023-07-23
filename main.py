@@ -16,8 +16,8 @@ def create_new_folder_file_in_database(title):
 
     # get file name
     formatted_time = datetime.now().strftime("%Y_%-m_%-d_%-H-%-M-%-S")
-    filepath = f"{folder_path}/{formatted_time}-{title}.md"
-    htmlpath = f"{folder_path}/{formatted_time}-{title}.html"
+    filepath = f"{folder_path}/{formatted_time}.md"
+    htmlpath = f"{folder_path}/{formatted_time}.html"
     
 
     # Create the new file
